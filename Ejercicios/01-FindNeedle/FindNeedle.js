@@ -1,25 +1,29 @@
 function FindNeedle(haystack, needle) {
-  // Solución 2 (n2)
   for (let i = 0; i < haystack.length; i++) {
     if (haystack.slice(i, needle.length + i) === needle) return i;
   }
   return -1;
 }
 
-// Solución 1   O(n*m)
-// for (let j = 0; j < needle.length; j++) {
-//   if (haystack[i + j] !== needle[j]) break;
-//   if (j === needle.length - 1) return i;
+//forma 1 : O(N*M)
+// for (let i = 0; i < haystack.length; i++) {
+//   for (let j = 0; j < needle.length; j++) {
+//     //recorro i, por cada valor de i recorro j y matcheo
+//     //si son diferentes rompo el bucle
+//     //si j es igual al largo de needle - 1, entonces duelvo i porque ahí empezó a matchear y no se rompió
+//     if (haystack[i + j] !== needle[j]) {
+//       break;
+//     }
+//     if (j === needle.length - 1) return i;
+//   }
 // }
+// return -1;
 
-// Recorrer el haystack
-// Preguntar si tenemos la primer letra del needle
-
-//      OK => Buscamos si sigue la coincidencia
-//      NO => Seguir recorriendo el haystack
-//      Si terminamos de recorrer el needle => Retornar el índice porque encontramos la palabra
-
-// Si terminamos de recorrer el haystack y no encontramos nada => -1
+//forma 2: O(N*N)
+// for (let i = 0; i < haystack.length; i++) {
+//   if (haystack.slice(i, needle.length + i) === needle) return i;
+// }
+// return -1;
 
 module.exports = FindNeedle;
 
